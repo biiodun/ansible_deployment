@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   configure-server:
     docker: 
-      - image: python:3.7-alpine3.11
+      - image: cimg/base:2021.04
     steps:
       - checkout
       - add_ssh_keys:
@@ -10,7 +10,8 @@ jobs:
       - run:
           name: install ansible
           command: |
-            apk add --update ansible 
+            sudo apt update
+            sudo apt install ansible
       - run:
           name: run ansible
           command: |
